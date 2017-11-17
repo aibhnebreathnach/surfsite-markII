@@ -16,15 +16,14 @@ class LocationPostsPage extends React.Component{
 
 	async componentWillMount(){
 		let self = this;
-		let locationId_int = parseInt(this.props.params.locationId, 10);
 
 		await axios
-			.get('http://localhost:3001/locations', {params : { id : locationId_int}})
+			.get('http://localhost:3000/api/locations/' + this.props.params.locationId)
 			.then(res => self.setState({ location : res.data[0] }))
 			.catch(err => console.log(err));
 		
 		axios
-			.get('http://localhost:3001/posts', {params : { locationId : locationId_int}})
+			.get('http://localhost:3000/api/posts', {params : { locationId : this.props.params.locationId}})
 			.then(res => self.setState({ posts : res.data }))
 			.catch(err => console.log(err));
 	}

@@ -18,7 +18,7 @@ class LocationForm extends React.Component{
 		if (!town | !country) { return; }
 
 		axios
-			.post('http://localhost:3001/locations', {
+			.post('http://localhost:3000/api/locations', {
 				town : town,
 				country : country
 			})

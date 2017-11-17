@@ -14,7 +14,7 @@ class Home extends Component {
 
 	componentDidMount() {
 		axios
-		  .get('http://localhost:3001/posts')
+		  .get('http://localhost:3000/api/posts')
 		  .then(res => this.setState({ posts: res.data }))
 		  .catch(err => console.log(err))
 	}

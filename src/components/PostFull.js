@@ -14,27 +14,26 @@ class PostFull extends React.Component {
 
 	async componentWillMount() {
 		let self = this;
-		let postId_int = parseInt(this.props.params.postId, 10); // parse decimal, base 10
 
 		// wait for all post to be returned
 		// then get user and location ids from post object
 		await axios
-				.get('http://localhost:3001/posts', { params: { id : postId_int } })
+				.get('http://localhost:3000/api/posts/' + this.props.params.postId)
 				.then(res => self.setState({ 
-					post: res.data[0] 
+					post: res.data[0]
 				}))
 				.catch(err => console.log(err));
 		axios
-			.get('http://localhost:3001/users?id=' + self.state.post.userId)
+			.get('http://localhost:3000/api/users/' + this.state.post.userId)
 			.then(res => self.setState({ 
-				user: res.data[0] 
+				user: res.data[0]
 			}))
 			.catch(err => console.log(err));
 
 		axios
-			.get('http://localhost:3001/locations?id=' + self.state.post.locationId)
+			.get('http://localhost:3000/api/locations/' + this.state.post.locationId)
 			.then(res => self.setState({ 
-				location: res.data[0] 
+				location: res.data[0]
 			}))
 			.catch(err => console.log(err));
 	}

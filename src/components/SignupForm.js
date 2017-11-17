@@ -27,7 +27,7 @@ class SignupForm extends React.Component {
 		if (!name | !imageLink | !email) { return; }
 
 		axios
-			.post('http://localhost:3001/users', {
+			.post('http://localhost:3000/api/users', {
 				name : name,
 				imageLink : imageLink,
 				email : email,

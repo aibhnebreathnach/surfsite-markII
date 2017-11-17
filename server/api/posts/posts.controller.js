@@ -3,7 +3,20 @@ var datastore = require('../datastore');
 
 // GET all posts
 exports.index = function(req, res) {
-	return res.status(200).json(datastore.posts);
+
+	if(req.query.userId != undefined){
+		var posts = _.filter(datastore.posts, (post) => {
+			return post.userId == req.query.userId;
+		});
+		return res.status(200).json(posts)
+	} else if (req.query.locationId != undefined){
+		var posts = _.filter(datastore.posts, (post) => {
+			return post.locationId == req.query.locationId;
+		});
+		return res.status(200).json(posts)
+	} else {
+		return res.status(200).json(datastore.posts);
+	}
 };
 
 

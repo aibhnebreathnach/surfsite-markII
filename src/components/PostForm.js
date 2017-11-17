@@ -21,8 +21,8 @@ class PostForm extends React.Component {
 		let self = this;
 
 		axios.all([
-			axios.get('http://localhost:3001/users'),
-			axios.get('http://localhost:3001/locations')
+			axios.get('http://localhost:3000/api/users'),
+			axios.get('http://localhost:3000/api/locations')
 		])
 		.then(axios.spread((users_res, loc_res) => {
 			self.setState({
@@ -52,7 +52,7 @@ class PostForm extends React.Component {
 		if (!title | !imageLink | !description | !location_id| !user_id) { return; }
 
 		axios
-			.post('http://localhost:3001/posts', {
+			.post('http://localhost:3000/api/posts', {
 				title : title,
 				imageLink : imageLink,
 				description : description,

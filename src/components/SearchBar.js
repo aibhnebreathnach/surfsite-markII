@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
 		let self = this;
 
 		axios
-			.get('http://localhost:3001/posts')
+			.get('http://localhost:3000/api/posts')
 			.then(res => self.setState({ posts : res.data}))
 			.catch(err => console.log(err));
 	}

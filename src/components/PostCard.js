@@ -15,8 +15,8 @@ class PostCard extends React.Component{
 
 		// get posts and user
 		axios.all([
-			axios.get('http://localhost:3001/users', { params: { id : this.props.post.userId } }),
-			axios.get('http://localhost:3001/locations', { params: { id : this.props.post.locationId } })
+			axios.get('http://localhost:3000/api/users/' + this.props.post.userId),
+			axios.get('http://localhost:3000/api/locations/' + this.props.post.locationId)
 		  ])
 		  .then(axios.spread(function (user_res, loc_res) {
 			  self.setState({ 

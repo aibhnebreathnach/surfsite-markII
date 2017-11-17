@@ -19,21 +19,18 @@ class UserPostsPage extends React.Component{
 	}
 
 	componentWillMount() {
-
-		// get all posts by user
-		let userId_int = parseInt(this.props.params.userId, 10);
 		let self = this; // for binding of 'this' in axios call
 
 		// get posts and user
 		axios.all([
-			axios.get('http://localhost:3001/posts', { params: { userId : userId_int } }),
-			axios.get('http://localhost:3001/users/'+this.props.params.userId),
-			axios.get('http://localhost:3001/locations')
+			axios.get('http://localhost:3000/api/posts', { params: { userId : this.props.params.userId } }),
+			axios.get('http://localhost:3000/api/users/' + this.props.params.userId),
+			axios.get('http://localhost:3000/api/locations')
 		  ])
 		  .then(axios.spread((posts_res, user_res, loc_res) => {
 			  self.setState({ 
 				  posts : posts_res.data,
-				  user : user_res.data,
+				  user : user_res.data[0],
 				  locations : loc_res.data
 				});
 		  }))
