@@ -1,22 +1,26 @@
 var _ = require('lodash');
 var datastore = require('../datastore');
+var Location = require('./location.model');
+
+function handleError(res, err) {
+	return res.status(500).json(err);
+}
 
 // GET all locations
 exports.index = function(req, res) {
-	return res.status(200).json(datastore.locations);
+	Location.find( (err, locations) => {
+		if (err) { return handleError(res, err); }
+		return res.status(200).json(locations);
+	});
 };
 
 
 // GET a single location
 exports.show = function(req, res) {
-	var id = req.params.id;
-
-	var location = _.filter(datastore.locations, post => {
-		return post.id == id;
+	Location.findById( req.params.id, (err, location) =>{
+		if (err) { return handleError(res, err); }
+		return res.status(201).json(location);
 	});
-
-	return res.status(200).json(location);
-
 };
 
 

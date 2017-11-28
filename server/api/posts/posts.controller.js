@@ -1,35 +1,27 @@
 var _ = require('lodash');
 var datastore = require('../datastore');
+var Post = require('./post.model');
+
+
+function handleError(res, err) {
+	return res.status(500).json(err);
+}
 
 // GET all posts
 exports.index = function(req, res) {
-
-	if(req.query.userId != undefined){
-		var posts = _.filter(datastore.posts, (post) => {
-			return post.userId == req.query.userId;
-		});
-		return res.status(200).json(posts)
-	} else if (req.query.locationId != undefined){
-		var posts = _.filter(datastore.posts, (post) => {
-			return post.locationId == req.query.locationId;
-		});
-		return res.status(200).json(posts)
-	} else {
-		return res.status(200).json(datastore.posts);
-	}
+	Post.find( (err, posts) => {
+		if (err) { return handleError(res, err); }
+		return res.status(200).json(posts);
+	});
 };
 
 
 // GET a single post
 exports.show = function(req, res) {
-	var id = req.params.id;
-
-	var post = _.filter(datastore.posts, post => {
-		return post.id == id;
+	Post.findById( req.params.id, (err, post) => {
+		if (err) { return handleError(res, err); }
+		return res.status(201).json(post)
 	});
-
-	return res.status(200).json(post);
-
 };
 
 
