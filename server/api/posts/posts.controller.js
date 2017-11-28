@@ -27,31 +27,15 @@ exports.show = function(req, res) {
 
 // POST a single new post
 exports.create = function(req, res) {
-
-	var id = datastore.posts.length + 1;
-
-	var post = {
-		"id": id,
-		"title": req.body.title,
-		"imageLink": req.body.imageLink,
-		"description": req.body.description,
-		"locationId": req.body.locationId,
-		"userId": req.body.userId
-	};
-
-	datastore.posts.push(post);
-
-	return res.status(201).json(post);
+	Post.create( req.body, (err, post) => {
+		return res.status(201).json(post);
+	});
 };
 
 // DELETE a post
 exports.destroy = function (req, res) {
-
-	var id = req.params.id;
-
-	var removed_post = _.remove(datastore.posts, function(post){
-		return post.id == id;
+	Post.findByIdAndRemove( req.params.id, (err, post) => {
+		if (err) { return handleError(res, err); }
+		return res.status(201).json(post);
 	});
-
-	return res.status(200).json(removed_post);
 };

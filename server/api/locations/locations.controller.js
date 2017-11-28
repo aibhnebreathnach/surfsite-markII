@@ -26,28 +26,15 @@ exports.show = function(req, res) {
 
 // POST a single new location
 exports.create = function(req, res) {
-
-	var id = datastore.locations.length + 1;
-
-	var location = {
-		"id": id,
-		"town": req.body.town,
-		"country": req.body.country
-	};
-
-	datastore.locations.push(location);
-
-	return res.status(201).json(location);
+	Location.create( req.body, (err, location) => {
+		return res.status(201).json(location);
+	});
 };
 
 // DELETE a post
 exports.destroy = function (req, res) {
-
-	var id = req.params.id;
-
-	var removed_location = _.remove(datastore.locations, function(location){
-		return location.id == id;
+	Location.findByIdAndRemove( req.params.id, (err, location) => {
+		if (err) { return handleError(res, err); }
+		return res.status(201).json(location);
 	});
-
-	return res.status(200).json(removed_location);
 };

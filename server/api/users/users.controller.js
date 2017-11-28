@@ -25,28 +25,15 @@ exports.show = function(req, res) {
 
 // POST a single new user
 exports.create = function(req, res) {
-	var id = datastore.users.length + 1;
-
-	var user = {
-		"id": id,
-		"name": req.body.name,
-		"imageLink": req.body.imageLink,
-		"email": req.body.email,
-		"bio": req.body.bio
-	};
-
-	datastore.users.push(user);
-
-	return res.status(201).json(user);
+	User.create( req.body, (err, user) => {
+		return res.status(201).json(user);
+	});
 };
 
 // DELETE a single user
 exports.destroy = function(req, res){
-	var id = req.params.id;
-
-	var removed_user = _.remove(datastore.users, function(user){
-		return user.id == id;
+	User.findByIdAndRemove( req.params.id, (err, user) => {
+		if (err) { return handleError(res, err); }
+		return res.status(201).json(user);
 	});
-
-	return res.status(200).json(removed_user);
 };
