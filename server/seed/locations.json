@@ -1,0 +1,22 @@
+{
+  "model" : "Location",
+  "data" : [
+    {
+      "town": "Unknown",
+      "country": "Unknown"
+    },
+    {
+      "town": "Tramore, Co. Waterford",
+      "country": "Ireland"
+    },
+    {
+      "town": "Strandhill Co. Sligo",
+      "country": "Ireland"
+    },
+    {
+      "town": "Lahinch, Co. Clare",
+      "country": "Ireland"
+    }
+  ]
+
+}

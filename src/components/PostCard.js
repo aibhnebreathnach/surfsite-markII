@@ -29,9 +29,9 @@ class PostCard extends React.Component{
 
 	render(){
 		// dynamically get links?
-		let full_post_link = '/posts/' + this.props.post.id;
-		let user_profile_link = '/user/' + this.state.user.id;
-		let location_link = '/location/' + this.state.location.id;
+		let full_post_link = '/posts/' + this.props.post._id;
+		let user_profile_link = '/user/' + this.state.user._id;
+		let location_link = '/location/' + this.state.location._id;
 
 		let title = this.props.post.title;
 		let description = this.props.post.description;

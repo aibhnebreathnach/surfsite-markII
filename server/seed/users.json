@@ -1,0 +1,30 @@
+{
+  "model" : "User",
+  "data" : [
+    {
+      "name": "Unknown",
+      "imageLink": "",
+      "email": "",
+      "bio": "This person has no bio"
+    },
+    {
+      "name": "Keith Malloy",
+      "imageLink": "http://www.patagonia.com/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw63f85132/images/ambassadors/320x320_kmalloy_s14.jpg",
+      "email": "keith@malloy.com",
+      "bio": "Like his brothers, Keith is a master of all forms of waveriding. Whether it’s a gun, a thruster or a pair of swim fins, his approach speaks of a lifelong commitment to the sea. After years of surfing in front of the lens, he recently stepped behind the scenes to direct the bodysurf film Come Hell or High Water. He lives in California with his family."
+    },
+    {
+      "name": "Jack O'Neill",
+      "imageLink": "http://ww4.hdnux.com/photos/13/32/16/2990995/12/920x920.jpg",
+      "email": "jack@oneill.com",
+      "bio": "Sometime around 1952, Jack opened the first Surf Shop in a garage across the Great Highway. He shaped a few balsa surfboards and sold accessories like paraffin wax and a few vests he started gluing together from neoprene. When the vests started selling, Jack decided to go into the wetsuit business. His friends laughed. They asked him what he planned to do for business after the handful of surfers in the area had bought one. Jack said he'd cross that bridge when he got to it."
+    },
+    {
+      "name": "Nathan Oldfield",
+      "imageLink": "image link goes here",
+      "email": "nathan@oldfield.com",
+      "bio": "I am a surf film maker!"
+    }
+  ]
+
+}

@@ -1,5 +1,4 @@
 var _ = require('lodash');
-var datastore = require('../datastore');
 var Post = require('./post.model');
 
 
