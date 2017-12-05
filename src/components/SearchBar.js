@@ -35,7 +35,7 @@ class SearchBar extends React.Component {
 	renderResults = (post) => {
 
 		// use postId param added in render; 'id' was overidden by Search.Result
-		let post_full_link = '/posts/'+post.postId;
+		let post_full_link = '/posts/'+post._id;
 		return (
 				<Link to={post_full_link} onClick={this.handleResultClick}>
 					<Card>
@@ -59,13 +59,6 @@ class SearchBar extends React.Component {
 		let results = _.filter(this.state.posts, (post) => {
 			return _.includes(post.title.toLowerCase(), this.state.search.toLowerCase());
 		});
-
-		/* 
-		semantic ui react Search.Result has an 'id' param
-		post's 'id' param gets overidden so just add new param post.postId = post.id 
-		to work around, not the best solution but ok for now
-		*/
-		results.forEach(post => { post.postId = post.id });
 
 		return(
 			<Search
