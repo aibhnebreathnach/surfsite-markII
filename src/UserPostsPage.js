@@ -30,7 +30,7 @@ class UserPostsPage extends React.Component{
 		  .then(axios.spread((posts_res, user_res, loc_res) => {
 			  self.setState({ 
 				  posts : posts_res.data,
-				  user : user_res.data[0],
+				  user : user_res.data,
 				  locations : loc_res.data
 				});
 		  }))

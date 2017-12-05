@@ -19,7 +19,7 @@ class LocationPostsPage extends React.Component{
 
 		await axios
 			.get('http://localhost:3000/api/locations/' + this.props.params.locationId)
-			.then(res => self.setState({ location : res.data[0] }))
+			.then(res => self.setState({ location : res.data }))
 			.catch(err => console.log(err));
 		
 		axios
