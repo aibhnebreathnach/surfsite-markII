@@ -10,8 +10,8 @@ class PostForm extends React.Component {
 		imageLink: '',
 		description : '',
 		// default user and location id = 1 = unknown
-		location_id : 1,
-		user_id : 1,
+		location_id : '',
+		user_id : '',
 
 		users : [],
 		locations : []
@@ -69,8 +69,8 @@ class PostForm extends React.Component {
 			imageLink: '',
 			description : '',
 			// default user and location id = 1 = unknown
-			location_id : 1,
-			user_id : 1,
+			location_id : '',
+			user_id : '',
 		});
 	}
 
@@ -78,12 +78,12 @@ class PostForm extends React.Component {
 
 		// set location options for dropdown menu
 		let locationOptions = this.state.locations.map( (location) => {
-			return <option key={location.id} value={location.id}>{location.town}</option>
+			return <option key={location._id} value={location._id}>{location.town}</option>
 		});
 
 		// set user options for dropdown menu
 		let userOptions = this.state.users.map( (user) => {
-			return <option key={user.id} value={user.id}>{user.name}</option>
+			return <option key={user._id} value={user._id}>{user.name}</option>
 		});
 	  return (
 			<Form>

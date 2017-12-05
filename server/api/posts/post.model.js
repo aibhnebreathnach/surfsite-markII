@@ -6,8 +6,8 @@ var PostSchema = new Schema({
   title : { type : String, required: true },
   imageLink : { type : String, required: true },
   description : { type : String, required: true },
-  user : { type: Schema.Types.ObjectId, ref: 'User'},
-  location : { type : Schema.Types.ObjectId, ref : 'Location'}
+  userId : { type: Schema.Types.ObjectId, ref: 'User'},
+  locationId : { type : Schema.Types.ObjectId, ref : 'Location'}
 });
 
 module.exports = mongoose.model('posts', PostSchema);

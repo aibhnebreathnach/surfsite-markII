@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var Post = require('./post.model');
-
+mongoose = require('mongoose');
 
 function handleError(res, err) {
 	return res.status(500).json(err);
@@ -26,6 +26,8 @@ exports.show = function(req, res) {
 
 // POST a single new post
 exports.create = function(req, res) {
+	req.body.userId = mongoose.Types.ObjectId(req.body.userId);
+	req.body.locationId = mongoose.Types.ObjectId(req.body.locationId);	
 	Post.create( req.body, (err, post) => {
 		return res.status(201).json(post);
 	});

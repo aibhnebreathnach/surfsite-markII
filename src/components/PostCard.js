@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Card, Image} from 'semantic-ui-react';
+import { Card, Image, Container} from 'semantic-ui-react';
 
 import axios from 'axios';
 
@@ -20,8 +20,8 @@ class PostCard extends React.Component{
 		  ])
 		  .then(axios.spread(function (user_res, loc_res) {
 			  self.setState({ 
-				  user : user_res.data[0],
-				  location : loc_res.data[0]
+				  user : user_res.data,
+				  location : loc_res.data
 				});
 		  }))
 		  .catch(error => console.log(error));
