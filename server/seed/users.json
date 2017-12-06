@@ -2,12 +2,6 @@
   "model" : "User",
   "data" : [
     {
-      "name": "Unknown",
-      "imageLink": "",
-      "email": "",
-      "bio": "This person has no bio"
-    },
-    {
       "name": "Keith Malloy",
       "imageLink": "http://www.patagonia.com/static/on/demandware.static/-/Library-Sites-PatagoniaShared/default/dw63f85132/images/ambassadors/320x320_kmalloy_s14.jpg",
       "email": "keith@malloy.com",

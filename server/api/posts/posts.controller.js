@@ -18,6 +18,7 @@ exports.index = function(req, res) {
 			return res.status(200).json(posts);
 		});
 	}
+	// if query string locationId - /posts?locationId={}
 	else if(typeof req.query.locationId != "undefined"){
 		var locId_obj = mongoose.Types.ObjectId(req.query.locationId);
 		Post.find( {locationId : locId_obj}, (err, posts) => {

@@ -9,7 +9,6 @@ class PostForm extends React.Component {
 		title : '',
 		imageLink: '',
 		description : '',
-		// default user and location id = 1 = unknown
 		location_id : '',
 		user_id : '',
 
@@ -27,7 +26,9 @@ class PostForm extends React.Component {
 		.then(axios.spread((users_res, loc_res) => {
 			self.setState({
 				users : users_res.data,
-				locations : loc_res.data
+				user_id : users_res.data[0]._id,
+				locations : loc_res.data,
+				location_id : loc_res.data[0]._id
 			});
 		}))
 		.catch(error => console.log(error));
@@ -68,7 +69,7 @@ class PostForm extends React.Component {
 			title : '',
 			imageLink: '',
 			description : '',
-			// default user and location id = 1 = unknown
+
 			location_id : '',
 			user_id : '',
 		});

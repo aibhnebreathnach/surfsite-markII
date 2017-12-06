@@ -6,6 +6,7 @@ var posts = require('./posts.json');
 
 Post.find({}).remove(function(){
 	Post.create(posts.data, function(){
-		console.log('Posts seeded!')
+		console.log('Posts primed!');
+		process.exit();
 	})
-});
+})
