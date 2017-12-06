@@ -1,5 +1,3 @@
-var _ = require('lodash');
-var datastore = require('../datastore');
 var User = require('./user.model');
 
 function handleError(res, err) {

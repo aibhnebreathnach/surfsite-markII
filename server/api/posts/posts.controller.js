@@ -1,5 +1,3 @@
-var _ = require('lodash');
-var url = require('url');
 var Post = require('./post.model');
 mongoose = require('mongoose');
 
@@ -33,14 +31,6 @@ exports.index = function(req, res) {
 		});
 	}
 };
-
-exports.list = function(req, res) {
-	var userId = mongoose.Types.ObjectId(req.params.userId);
-	Post.find( {"userId" : userId}, (err, posts) =>{
-		if(err){ return handleError(res, err); }
-		return res.status(200).json(posts);
-	});
-}
 
 
 // GET a single post

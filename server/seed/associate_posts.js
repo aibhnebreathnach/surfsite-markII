@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/surf-db');
 
 var Post = require('../api/posts/post.model');
-var posts = require('./posts.json');
+var posts = require('./json/posts.json');
 var User = require('../api/users/user.model');
 var Location = require('../api/locations/location.model');
 

@@ -9,6 +9,7 @@
 # production
 /build
 
+# local db folder
 /server/surf-db
 
 # misc
