@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var url = require('url');
 var Post = require('./post.model');
 mongoose = require('mongoose');
 
@@ -8,11 +9,28 @@ function handleError(res, err) {
 
 // GET all posts
 exports.index = function(req, res) {
-	Post.find( (err, posts) => {
-		if (err) { return handleError(res, err); }
+
+	if(typeof req.query.userId != "undefined") {
+		var userId_obj = mongoose.Types.ObjectId(req.query.userId);
+		Post.find( {userId : userId_obj}, (err, posts) => {
+			if (err) { return handleError(res, err); }
+			return res.status(200).json(posts);
+		});
+    } else {
+		Post.find( (err, posts) => {
+			if (err) { return handleError(res, err); }
+			return res.status(200).json(posts);
+		});
+	}
+};
+
+exports.list = function(req, res) {
+	var userId = mongoose.Types.ObjectId(req.params.userId);
+	Post.find( {"userId" : userId}, (err, posts) =>{
+		if(err){ return handleError(res, err); }
 		return res.status(200).json(posts);
 	});
-};
+}
 
 
 // GET a single post
