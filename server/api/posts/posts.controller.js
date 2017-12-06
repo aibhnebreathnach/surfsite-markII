@@ -10,12 +10,21 @@ function handleError(res, err) {
 // GET all posts
 exports.index = function(req, res) {
 
+	// if query string userId - /posts?userId={}
 	if(typeof req.query.userId != "undefined") {
 		var userId_obj = mongoose.Types.ObjectId(req.query.userId);
 		Post.find( {userId : userId_obj}, (err, posts) => {
 			if (err) { return handleError(res, err); }
 			return res.status(200).json(posts);
 		});
+	}
+	else if(typeof req.query.locationId != "undefined"){
+		var locId_obj = mongoose.Types.ObjectId(req.query.locationId);
+		Post.find( {locationId : locId_obj}, (err, posts) => {
+			if (err) { return handleError(res, err); }
+			return res.status(200).json(posts);
+		});
+	// otherwise get all posts
     } else {
 		Post.find( (err, posts) => {
 			if (err) { return handleError(res, err); }
