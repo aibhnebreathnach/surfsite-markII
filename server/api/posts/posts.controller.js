@@ -3,7 +3,7 @@ mongoose = require('mongoose');
 
 function handleError(res, err) {
 	return res.status(500).json(err);
-}
+};
 
 // GET all posts
 exports.index = function(req, res) {
@@ -32,7 +32,6 @@ exports.index = function(req, res) {
 	}
 };
 
-
 // GET a single post
 exports.show = function(req, res) {
 	Post.findById( req.params.id, (err, post) => {
@@ -52,7 +51,7 @@ exports.create = function(req, res) {
 
 // PUT update in an existing post
 exports.update = function(req, res) {
-	Post.findById(req.params.id, function(err, post){
+	Post.findById(req.params.id, (err, post) => {
 
 		// if field present in re.body then update
 		// otherwise set as current value
@@ -68,12 +67,30 @@ exports.update = function(req, res) {
 		});
 		
 	});
-}
+};
 
 // DELETE a post
 exports.destroy = function (req, res) {
 	Post.findByIdAndRemove( req.params.id, (err, post) => {
 		if (err) { return handleError(res, err); }
 		return res.status(201).json(post);
+	});
+};
+
+// Add a new comment to a post
+exports.add_comment = function (req, res) {
+	Post.findById(req.params.id, (err, post) => {
+		if (err) { return handleError(res, err); }
+
+		var userId_obj = mongoose.Types.ObjectId(req.body.userId);
+		var comment = {
+			content : req.body.content,
+			userId : userId_obj
+		}
+		post.comments.push(comment);
+		post.save( (err, post) => {
+			if(err) { return handleError(res, err); }
+			return res.status(200).json(post);
+		})
 	});
 };

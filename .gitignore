@@ -12,6 +12,9 @@
 # local db folder
 /server/surf-db
 
+# submission
+*.zip
+
 # misc
 .DS_Store
 .env.local

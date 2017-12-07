@@ -8,6 +8,7 @@ var Location = require('../api/locations/location.model');
 
 Post.find({}, function(err, posts) {
 
+	// Associate random users and location with each post
 	posts.map( post => {
 		// Get the count of all users
 		User.count( function (err, count) {

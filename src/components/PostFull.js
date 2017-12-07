@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Container } from 'semantic-ui-react';
 import { Link } from 'react-router';
+import Comments from '../components/Comments'
 
 import axios from 'axios';
 
@@ -55,6 +56,9 @@ class PostFull extends React.Component {
 				<p> {description} </p>
 				<h3> Photographer: <Link to={user_profile_link}> {user.name} </Link> </h3>
 				<h3> Location: <Link to={location_link}> {location.town}, {location.country} </Link> </h3>
+
+				<h3> Comments: </h3>
+				<Comments post={this.state.post} />
 			</Container>
 		)
 	}
