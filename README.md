@@ -21,32 +21,53 @@ You can also search for any post using the search bar.
 
 ## Installation requirements.
 + [Node js](https://nodejs.org/en/)
-+ All below provided in package.json installed using npm install
++ [MongoDB](https://www.mongodb.com/)
+<br> All below provided in package.json installed using ```npm install```
 + [ReactJS v15.6.1](https://reactjs.org/)
++ [Express](https://github.com/expressjs/express)
++ [Mongoose](http://mongoosejs.com/)
 + [create-react-app tool](https://github.com/facebookincubator/create-react-app)
 + [Semantic-UI-React](https://react.semantic-ui.com)
 + [axios](https://github.com/axios/axios)
-+ [json-server](https://github.com/typicode/json-server)
 
 To clone and run app:
 ```
-$ git clone https://github.com/aibhnebreathnach/surfsite.git
-$ cd surfsite
+$ git clone https://github.com/aibhnebreathnach/surfsite-markII.git
+$ cd surfsite-markII
 $ npm install
 ```
-Then in a seperate terminal:
+
+Then setup mongoDB
 ```
-$ cd server
-$ json-server --watch db.json --port 3001
+$ mkdir surf-db
+$ mongod --dbpath ./surf-db
 ```
-Leave the above running and then in root directory:
+Leave that running, then in a seperate terminal:
 ```
+$ cd seed
+$ ./seed.sh
+```
+Check it has seeded using mongo console
+```
+$ mongo
+> use surf-db
+> show collections
+
+  locations
+  posts
+  users
+```
+Then start the server, in ```server/```
+```
+$ node bin/www
+```
+Leave server running and then to run app:
+```
+$ cd src
 $ npm start
 ```
 
 ## Data Model Design.
-
-Sample data taken from ```db.json```
 
 Example of single post from the array of posts in test data <br>
 locationId - reference to an existing location object by id - location of the post. <br>
@@ -101,13 +122,13 @@ Example of a single user from the array of users in test data <br>
 + /signup - user signup page
 
 ## Extra features.
-+ JSON-server : A simple json server was developed for the app, holding and persisting all post, location and user data.
++ CRUD on users, locations, posts.
 + Axios : Axios, a promise based HTTP client, was used to access the json server.
 + Semantic-UI-React: A React integration of Semantic UI, a HTML/CSS styling framework.
 
 ## Independent learning.
 + axios - promise based HTTP client
-+ ES6 async await
++ Async / Await
 
 
 [posts_json]: ./images/posts_json.png
