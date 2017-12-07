@@ -80,6 +80,10 @@ exports.destroy = function (req, res) {
 // Add a new comment to a post
 exports.add_comment = function (req, res) {
 	Post.findById(req.params.id, (err, post) => {
+
+		console.log("userID " + req.body.userId);
+		console.log("content " + req.body.content);
+
 		if (err) { return handleError(res, err); }
 
 		var userId_obj = mongoose.Types.ObjectId(req.body.userId);
