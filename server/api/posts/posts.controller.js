@@ -41,7 +41,6 @@ exports.show = function(req, res) {
 	});
 };
 
-
 // POST a single new post
 exports.create = function(req, res) {
 	req.body.userId = mongoose.Types.ObjectId(req.body.userId);
@@ -50,6 +49,26 @@ exports.create = function(req, res) {
 		return res.status(201).json(post);
 	});
 };
+
+// PUT update in an existing post
+exports.update = function(req, res) {
+	Post.findById(req.params.id, function(err, post){
+
+		// if field present in re.body then update
+		// otherwise set as current value
+		post.title = req.body.title || post.title;
+		post.imageLink = req.body.imageLink || post.imageLink;
+		post.description = req.body.description || post.description;
+		post.userId = req.body.userId || post.userId;
+		post.locationId = req.body.locationId || post.locationId;
+
+		post.save( (err, post) => {
+			if(err) { return handleError(res, err); }
+			return res.status(200).send(post);
+		});
+		
+	});
+}
 
 // DELETE a post
 exports.destroy = function (req, res) {
