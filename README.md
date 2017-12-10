@@ -137,16 +137,16 @@ $ npm start
 + Async / Await
 
 
-[post_schema]: ./images/Post_schema.png
-[location_schema]: ./images/Location_schema.png
-[user_schema]: ./images/User_schema.png
+[post_schema]: ./README_images/Post_schema.png
+[location_schema]: ./README_images/Location_schema.png
+[user_schema]: ./README_images/User_schema.png
 
-[component_design]: ./images/component_design.png
+[component_design]: ./README_images/component_design.png
 
-[home_view]: ./images/home_view.png
-[full_post_view]: ./images/full_post_view.png
-[signup_view]: ./images/signup_view.png
-[post_view]: ./images/post_view.png
-[addlocation_view]: ./images/addlocation_view.png
-[search_view]: ./images/search_view.png
-[comment_view]: ./images/comment_view.png
+[home_view]: ./README_images/home_view.png
+[full_post_view]: ./README_images/full_post_view.png
+[signup_view]: ./README_images/signup_view.png
+[post_view]: ./README_images/post_view.png
+[addlocation_view]: ./README_images/addlocation_view.png
+[search_view]: ./README_images/search_view.png
+[comment_view]: ./README_images/comment_view.png
