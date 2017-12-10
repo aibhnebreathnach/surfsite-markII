@@ -45,7 +45,8 @@ class Comments extends React.Component {
 		this.setState({
 			content : '',
 			userId : '',
-		})
+		});
+
 	}
 
 	render(){
@@ -54,13 +55,20 @@ class Comments extends React.Component {
 			return <option key={user._id} value={user._id}>{user.name}</option>
 		});
 		let comments = _.map(this.props.post.comments, (comment) => {
+			let commenter = _.find(this.state.users, (user) => {
+				return user._id == comment.userId;
+			});
+
+			let commenter_profile_link = 'user/'+commenter._id;
 			return( 
 				<Card raised>
 					<Card.Header>
 						{comment.content}
 					</Card.Header>
 					<Card.Description>
-						{comment.userId}
+						<Link to={commenter_profile_link}>
+							{commenter.name}
+						</Link>
 					</Card.Description>
 				</Card>
 			)
