@@ -69,22 +69,20 @@ $ npm start
 
 ## Data Model Design.
 
-Example of single post from the array of posts in test data <br>
-locationId - reference to an existing location object by id - location of the post. <br>
-userId - reference to an existing user object by id - user who made the post <br>
-![][posts_json]
+### Post and Comment Schema
++ User and Location IDs are references to User and Location objects.
++ User and Location IDs not 'required' for seeding purposes.
++ Contains embedded Comment schema - a comment by a user on a post.
+![][post_schema]
 
-Example of a single location from the array of locations in test data <br>
-![][locations_json]
+### Location Schema
+![][location_schema]
 
-Example of a single user from the array of users in test data <br>
-![][users_json]
+### User Schema
+![][user_schema]
 
 ## App Component Design.
-
- . . . A diagram showing the app's hierarchical component design (see example below) . . . .  
-
-![][design]
+![][component_design]
 
 ## UI Design.
 
@@ -111,10 +109,17 @@ Example of a single user from the array of users in test data <br>
 #### Search View - Search for a post, each result is a link to full post view <br>
 ![][search_view]
 
+#### Comment View - Create a comment, comment contains link to users profile
+![][comment_view]
+
 ## Routing.
 
 + / - homepage; see all posts
 + /posts/:postId - full post page of a particular post (:postId)
++ ##### /posts - support for query string:
+  + /posts?userId={user ID}
+  + /posts?locationId={location ID}
+
 + /post - make a new post
 + /user/:userId - see particular user profile (:userId)
 + /location/:locationId - see all posts for a particular location (:locationId)
@@ -122,8 +127,9 @@ Example of a single user from the array of users in test data <br>
 + /signup - user signup page
 
 ## Extra features.
-+ CRUD on users, locations, posts.
-+ Axios : Axios, a promise based HTTP client, was used to access the json server.
++ Full CRUD on users, locations, posts.
++ Embedded Schema - Comments on Post.
++ Axios : Axios, a promise based HTTP client.
 + Semantic-UI-React: A React integration of Semantic UI, a HTML/CSS styling framework.
 
 ## Independent learning.
@@ -131,11 +137,11 @@ Example of a single user from the array of users in test data <br>
 + Async / Await
 
 
-[posts_json]: ./images/posts_json.png
-[locations_json]: ./images/locations_json.png
-[users_json]: ./images/users_json.png
+[post_schema]: ./images/Post_schema.png
+[location_schema]: ./images/Location_schema.png
+[user_schema]: ./images/User_schema.png
 
-[design]: ./images/design.png
+[component_design]: ./images/component_design.png
 
 [home_view]: ./images/home_view.png
 [full_post_view]: ./images/full_post_view.png
@@ -143,3 +149,4 @@ Example of a single user from the array of users in test data <br>
 [post_view]: ./images/post_view.png
 [addlocation_view]: ./images/addlocation_view.png
 [search_view]: ./images/search_view.png
+[comment_view]: ./images/comment_view.png
