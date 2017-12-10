@@ -1,4 +1,4 @@
-# Assignment 1 - ReactJS app.
+# Assignment 2 - E2E app.
 
 Name: Aibhne Breathnach
 
@@ -67,25 +67,50 @@ $ cd src
 $ npm start
 ```
 
-## Data Model Design.
+## Server-side.
 
-### Post and Comment Schema
+#### Web API interface.
+
+##### Post
++ GET /api/posts/ - Get all posts
++ GET /api/posts?userId=[user id] & locationId=[location id] - get posts with fields matching query strings, any number of the above queries can be included.
++ GET /api/posts/:id - Get a specific post
++ POST /api/posts/ - Create a new post
++ PUT /api/posts/:id - Update an existing post
++ DELETE /api/posts/:id - Delete a post
++ PATCH /api/posts/:id - Add a comment to a post
+
+##### User
++ GET /api/users/ - Get all users
++ GET /api/users/:id - Get a specific user
++ POST /api/users/ - Create a new user
++ PUT /api/users/:id - Update an existing user
++ DELETE /api/users/:id - Delete a user
+
+##### Location
++ GET /api/locations/ - Get all locations
++ GET /api/locations/:id - Get a specific location
++ POST /api/locations/ - Create a new location
++ PUT /api/locations/:id - Update an existing location
++ DELETE /api/locations/:id - Delete a location
+
+### Data Model Design.
+
+##### Post and Comment Schema
 + User and Location IDs are references to User and Location objects.
 + User and Location IDs not 'required' for seeding purposes.
 + Contains embedded Comment schema - a comment by a user on a post.
 ![][post_schema]
 
-### Location Schema
+##### Location Schema
 ![][location_schema]
 
-### User Schema
+##### User Schema
 ![][user_schema]
 
-## App Component Design.
-![][component_design]
+## Client-side.
 
-## UI Design.
-
+#### UI Design.
 #### Home Page View: <br> 
 + Landing page for the app.
 + Each post card image is a link to the full post view.
@@ -112,8 +137,7 @@ $ npm start
 #### Comment View - Create a comment, comment contains link to users profile
 ![][comment_view]
 
-## Routing.
-
+#### Routing.
 + / - homepage; see all posts
 + /posts/:postId - full post page of a particular post (:postId)
 + ##### /posts - support for query string:
@@ -126,15 +150,14 @@ $ npm start
 + /addlocation - add a location to the database
 + /signup - user signup page
 
-## Extra features.
+-------------------------------------
+
+## Extra features
 + Full CRUD on users, locations, posts.
++ Query String support - Post by userId and/or locationId. 
 + Embedded Schema - Comments on Post.
-+ Axios : Axios, a promise based HTTP client.
-+ Semantic-UI-React: A React integration of Semantic UI, a HTML/CSS styling framework.
 
 ## Independent learning.
-+ axios - promise based HTTP client
-+ Async / Await
 
 
 [post_schema]: ./README_images/Post_schema.png
